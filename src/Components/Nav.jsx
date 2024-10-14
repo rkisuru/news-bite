@@ -38,11 +38,11 @@ export const Nav = () => {
     <div>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <div class="inline-flex">
-            <button class="bg-blue-500 text-white font-bold py-2 px-2 border-b-4 border-blue-700">
+          <div className="inline-flex">
+            <button className="bg-blue-500 text-white font-bold py-2 px-2 border-b-4 border-blue-700">
               News
             </button>
-            <button class="bg-white-500 text-blue-500 font-bold py-2 px-2 border-b-4 border-white-700">
+            <button className="bg-white-500 text-blue-500 font-bold py-2 px-2 border-b-4 border-white-700">
               BITE
             </button>
           </div>
