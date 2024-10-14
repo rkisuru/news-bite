@@ -10,19 +10,36 @@ export const NewsProvider = ({ children }) => {
   const [source, setSource] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const apiKey = "YOUR_NEWS_API_KEY";
-
   useEffect(() => {
-    let apiUrl = `https://newsapi.org/v2/top-headlines?apiKey=${apiKey}`;
+    const everything = "everything?";
 
-    if (country) apiUrl += `&country=${country}`;
-    if (category) apiUrl += `&category=${category}`;
-    if (source) apiUrl += `&sources=${source}`;
-    if (searchQuery) apiUrl += `&q=${searchQuery}`;
+    let apiUrl = `https://newsapi.org/v2/`;
+
+    const apiKey = "";
+
+    if (searchQuery) {
+      apiUrl += everything + `q=${searchQuery}`;
+    } else if (country || category || source) {
+      apiUrl = `https://newsapi.org/v2/top-headlines?`;
+
+      if (country) {
+        apiUrl += `country=${country}`;
+
+        if (category) {
+          apiUrl += `&category=${category}`;
+        }
+      } else if (category) {
+        apiUrl += `category=${category}`;
+      } else if (source) {
+        apiUrl += `sources=${source}`;
+      }
+    } else {
+      apiUrl = `https://newsapi.org/v2/top-headlines?country=us`;
+    }
 
     const fetchNews = async () => {
       try {
-        const response = await axios.get(apiUrl);
+        const response = await axios.get(apiUrl + apiKey);
         setArticles(response.data.articles);
       } catch (error) {
         console.error("Error fetching news:", error);
@@ -40,6 +57,9 @@ export const NewsProvider = ({ children }) => {
         setCategory,
         setSource,
         setSearchQuery,
+        category,
+        country,
+        source,
       }}
     >
       {children}
