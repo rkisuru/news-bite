@@ -1,7 +1,14 @@
+import { Nav } from "./Components/Nav";
+import NewsBoard from "./Components/NewsBoard";
+import { NewsProvider } from "./Components/NewsContext";
+
 export default function App() {
-    return (
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-            Button
-        </button>
-    )
+  return (
+    <div>
+      <NewsProvider>
+        <Nav />
+        <NewsBoard />
+      </NewsProvider>
+    </div>
+  );
 }
