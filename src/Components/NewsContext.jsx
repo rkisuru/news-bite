@@ -15,7 +15,7 @@ export const NewsProvider = ({ children }) => {
 
     let apiUrl = `https://newsapi.org/v2/`;
 
-    const apiKey = "";
+    const apiKey = import.meta.env.VITE_API_KEY;
 
     if (searchQuery) {
       apiUrl += everything + `q=${searchQuery}`;
